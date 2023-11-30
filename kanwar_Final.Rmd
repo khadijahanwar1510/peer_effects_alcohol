@@ -1,0 +1,583 @@
+---
+title: "POL346 Take Home Final"
+author: "kanwar"
+date: "`r Sys.Date()`"
+references:
+- author: 
+  - family: Olson
+    given: Julie Skalamera
+  - author:  
+    family: Crosnoe
+    given: Robert 
+  id: olson2018
+  issued:
+    year: 2018
+  publisher: Social science quarterly
+  volume: 99
+  issue: 4
+  pages: 1349-1362
+  title: 'The Interplay of Peer, Parent, and Adolescent Drinking'
+  URL: 'https://doi.org/10.1111/ssqu.12497'
+  type: article-journal
+- author: 
+  - family: Halpern
+    given: Caronline Tucker
+  - author:  
+    family: Kaestle
+    given: Christine E 
+  - author:  
+    family: Hallfors
+    given:  Denise Dion 
+  id: halpern2007
+  issued:
+    year: 2007
+  publisher: Prevention Science
+  volume: 8
+  pages: 1-10
+  title: 'Perceived Physical Maturity, Age of Romantic Partner, and Adolescent Risk Behavior'
+  URL:  'https://doi.org/10.1007/s11121-006-0046-1'
+  type: article-journal
+- author: 
+  - family: Leventhal
+    given: Tama
+  - author:  
+    family: Brooks-Gunn
+    given: Jeanne 
+  id: leventhal2000
+  issued:
+    year: 2000
+  publisher: Psychological Bulletin
+  volume: 126
+  issue: 2
+  pages: 309-337
+  title: 'The neighborhoods they live in: The effects of neighborhood residence on child and adolescent outcomes'
+  URL: 'https://psycnet.apa.org/doi/10.1037/0033-2909.126.2.309'
+  type: article-journal
+- author: 
+  - family: Simons-Morton
+    given: Bruce
+  - author:  
+    family: Haynie
+    given: Denise L 
+  - author: 
+    family: Crump
+    given: Aria D
+  - author:  
+    family: Eitel
+    given: Patricia
+  - author: 
+    family: Saylor
+    given: Keith E
+  id: simonsmorton2001
+  issued:
+    year: 2001
+  publisher: Health Education & Behavior
+  volume: 28
+  issue: 1
+  pages: 95-107
+  title: 'Peer and Parent Influences on Smoking and Drinking among Early Adolescents'
+  URL: 'https://doi.org/10.1177/109019810102800109'
+  type: article-journal  
+- author: 
+  - family: Windle
+    given: Michael
+  id: windle2000
+  issued:
+    year: 2000
+  publisher: Applied Developmental Science
+  volume: 4
+  issue: 2
+  pages: 98-110
+  title: 'Parental, Sibling, and Peer Influences on Adolescent Substance Use and Alcohol Problems'
+  URL: 'https://doi.org/10.1207/S1532480XADS0402_5'
+  type: article-journal
+- author: 
+  - family: Naeger
+    given: Sarah
+  id: naeger2017
+  issued:
+    year: 2017
+  publisher: Center for Behavioral Health Statistics and Quality, Substance Abuse and Mental Health Services Administration
+  title: 'Emergency department visits involving underage alcohol use: 2010 to 2013'
+  type: article-journal  
+- author: 
+  - family: Hlavac
+    given: Marek
+  id: hlavac2018stargazer
+  issued:
+    year: 2018
+  publisher: R package version 5.2.2
+  title: 'Stargazer: Well-formatted regression and summary statistics tables'
+  type: article-journal
+- author: 
+  - family: Centers for Disease Control and Prevention (CDC)
+  id: cdc2010
+  issued:
+    year: 2010
+  publisher: CDC
+  title: 'Alcohol-Related Disease Impact (ARDI)'
+  type: article-journal  
+- author: 
+  - family: Harris
+    given: Kathleen Mullan
+  - author: 
+    family: Udry
+    given: Richard J
+  id: harris2018national
+  issued:
+    year: 2018
+  page: 08-06
+  publisher: 'Ann Arbor, MI: Carolina Population Center, University of North Carolina-Chapel
+    Hill [distributor], Inter-university Consortium for Political and Social Research
+    [distributor]'
+  title: National longitudinal study of adolescent to adult health (add health), 1994-2008
+    [Public Use]
+  type: article-journal
+- author: 
+  - family: Hagan
+    given: Lisa Kindleberger
+  - author: 
+    family: Kuebli
+    given: Janet
+  id: hagankuebli2007
+  volume: 28
+  URL: 'https://doi.org/10.1016/j.appdev.2006.10.007'
+  issue: 1
+  issued:
+    year: 2007
+  page: 02-14
+  publisher: Journal of Applied Developmental Psychology
+  title: Mothers' and fathers' socialization of preschoolers' physical risk taking
+    [Public Use]
+  type: article-journal
+nocite: '@*'
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+header-includes:
+   - \usepackage{float}
+---
+
+## Introduction 
+
+Is regular drinking by close peers associated with an increase an adolescent’s alcohol consumption? Using data from the 1995 Wave I In-Home survey of Add Health, this study uses multivariate linear regression models to investigate whether peers’ drinking habits are significant predictors of adolescent alcohol consumption. I further explore whether these peer influences are self-regulating or exist in interaction with other relationship influences from parental and romantic sources in the adolescents’ life. This engages with a scholarly debate regarding whether peer influences are independent and salient predictors of adolescent drinking or if they are subject to moderators such as parental and romantic influences [@halpern2007]. According to the CDC, over 4,300 deaths and 100,000 emergency room visits occur among underage youth every year due to excessive drinking (CDC 2010; Naeger 2017). Thus, understanding the peer influences underlying adolescent alcohol consumption can lead to key insights regarding ways that adolescents’ social environments can be modified to encourage healthier and more responsible drinking to minimizes health damage. Our findings suggest that having peers that drink regularly is associated with significant increases in adolescent alcohol consumption that are independent of parental drinking habits. These increases are magnified further if there is romantic engagement with a group of peers that consume alcohol. 
+
+## Theory
+
+Scholarly literature is host to contrasting theories about the processes through which peer influence affects alcohol consumption in adolescents. Some scholars contend that peer influences are largely independent of and supplant parental drinking habits. @windle2000 used multivariate development models to explore familial and peer predictors of alcohol use in adolescence using a sample of 570 middle-stage adolescents. Findings suggested that peer alcohol use was more strongly related to adolescent alcohol use than parental use. @simonsmorton2001 built on these findings, having problem-behaving friends provided larger adjusted odds ratios than parental influence variables. Other scholars argue that peer influences on adolescent alcohol consumption actually exist in interplay with parental influences. @olson2018 analyzed Add Health data from Waves I and II to explore the interaction between peer and parental influences and found that adolescents whose parents engaged in binge-drinking were more likely to increase alcohol consumption at every level of peer consumption. These findings suggest that parental influences are regulators of peer influences. Moreover, research suggests other moderators of peer influence are in place even within peer circles, such as having a romantic partner. @halpern2007 suggest that adolescents that are in romantic relationship are likely to show increased levels of risk behaviors such as alcohol use. A scholarly debate thus emerges around the discussion of peer influences on adolescent alcohol consumption. One school of thought suggests that peers’ drinking habits are self-regulating and stronger predictors of adolescent drinking choices than parental drinking habits. However, another school of though argues that peer influences on alcohol are subject to moderators and exist in interaction with parental and romantic influences. My research engages with this debate, exploring the significance of peer influences as predictors of adolescent alcohol consumption and considering the salience of peer effects relative to parental and romantic influences. 
+
+ 
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+	echo = FALSE,
+	message = FALSE,
+	warning = FALSE
+)
+```
+
+```{r load_packages, include = FALSE}
+set.seed(12345)
+library(dplyr)
+library(ggplot2)
+library(tidyr)
+library(infer)
+library(naniar)
+library(stargazer)
+library(kableExtra)
+library(stringr)
+library(gridExtra)
+library(haven)
+library(plyr)
+library(janitor)
+library(tibble)
+library(sjPlot)
+library(sjlabelled)
+library(xtable)
+library(equatiomatic)
+library(naniar)
+suppressMessages(library(cowplot))
+library(arsenal)
+library(grid)
+library(Amelia)
+library(MatchIt)
+library(cobalt)
+library(ggthemes)
+
+```
+
+```{r scrub data, echo = FALSE, include= FALSE}
+load("21600-0001-Data.rda") 
+drinks <-  as.data.frame(da21600.0001) %>% clean_names()
+rm(da21600.0001) #, da21600.0005)
+
+drinks<- drinks %>% 
+ dplyr::select(aid, #identifier
+         bio_sex, #sex
+         h1gi9, #race
+         h1rr1, #have you been in a romantic relationship in the last 18 months
+         pa28f, #neighborhood substance use low 
+         h1fs6, #depressed
+         h1to16, #num drinks
+         h1gi1y, #age
+         h1to15,  #drinks screen 2
+         h1to12, #drinks screen 1 
+         h1wp2, #parents let you decide who to hang out w
+         h1to29, #peers drink
+         pa61, # mom drinks
+         h1gh60, #weight
+         h1gh59a, #height feet
+         h1gh59b, #height inches
+       #  h1pf5, #mom relationship
+         pc1 #parental survey respobdent 
+         ) %>% 
+          
+ dplyr:: rename(
+         sex = bio_sex, 
+         race = h1gi9, 
+         pick_peers = h1wp2,
+         romantic_relationship = h1rr1,
+         substance_use_neighborhood = pa28f,
+         depressed = h1fs6, 
+         age = h1gi1y, 
+         drinks = h1to16,
+         peers_drink = h1to29, 
+         mom_drinks = pa61, 
+         weight = h1gh60, 
+         height = h1gh59b,
+        # mom_relationship = h1pf5
+         ) %>%
+  
+  mutate(
+         race = as.factor(race),
+         sex = as.character(sex), 
+         romantic_relationship = as.numeric(romantic_relationship), 
+         substance_use_neighborhood = as.numeric(substance_use_neighborhood),
+         depressed = as.numeric(depressed), 
+         age = 1995 - as.numeric(substr(age,11,14)), 
+         drinks = as.numeric(drinks), 
+         h1to12 = as.numeric(h1to12), 
+         h1to15 = as.numeric(h1to15),
+         peers_drink = as.numeric(peers_drink),
+         mom_drinks = as.numeric(mom_drinks), 
+         pick_peers = as.numeric(pick_peers),
+         weight = as.numeric(as.character(weight)), 
+         h1gh59a = as.numeric(substr(h1gh59a,2,2)),
+         height = as.numeric(substr(height,2,3)),
+       #  mom_relationship = as.numeric(mom_relationship), 
+         pc1 = as.numeric(pc1)
+         )
+
+drinks$sex <- substr(drinks$sex, 8, 20)
+drinks$sex <- as.factor(drinks$sex)
+
+drinks$race <- substr(drinks$race, 9, 40)
+drinks$race <- ifelse(drinks$race == "American Indian/Native American", "Native American", drinks$race)
+drinks$race <- as.factor(drinks$race) 
+
+
+drinks$romantic_relationship <- ifelse(drinks$romantic_relationship == 2, 1, 0)
+drinks$pick_peers <- ifelse(drinks$pick_peers == 2, 1, 0)
+
+# bmi
+drinks$height = (drinks$h1gh59a)*12 + drinks$height
+drinks$bmi <- (703 * drinks$weight)/((drinks$height)^2)
+
+# controls
+drinks$substance_use_neighborhood <- ifelse(drinks$substance_use_neighborhood == 2, "Low", "Not Low") %>% as.factor()
+drinks$depressed <- ifelse(drinks$depressed == 1, 0, 1)
+
+# mom drinks
+drinks$mom_drinks <- ifelse(drinks$mom_drinks>2, 1, 0)
+#drinks$mom_relationship <- ifelse(drinks$mom_relationship <3, "Satisfied","notSatisfied") %>% as.factor()
+
+#drinks
+drinks$h1to15<- ifelse(drinks$h1to12 == 1, 7, drinks$h1to15)
+drinks$drinks <- ifelse(drinks$h1to15 == 7, 0, drinks$drinks)
+
+#subset
+drinks <- subset(drinks, pc1 == 1 & h1to12 != 1 & drinks <= 45, select = -c(h1to12, h1gh59a, height, weight, h1to15, pc1))
+
+```
+
+```{r missingness, include = FALSE}
+#nona <- na.omit(drinks)
+
+#quantile(drinks$drinks, probs = c(0.25,0.75), na.rm = TRUE)
+
+allmiss<- vis_miss(drinks)
+less3miss <- vis_miss(drinks[drinks$drinks <3,])
+more3miss <- vis_miss(drinks[drinks$drinks >3,])
+
+```
+
+```{r imputations, include = FALSE}
+amelia <- data.frame(drinks)
+match(c("peers_drink"), names(amelia))
+
+bounds_matrix <- matrix(   
+    ncol  = 3,             
+    byrow = TRUE,
+    data  = c(10, 1, 4) 
+              )  
+
+
+set.seed(1234)
+imputed_1 <- amelia(
+  x = amelia,                   # data set
+  m = 1,                           # # of imputations, typically 5, in pol346: 1
+  idvars = c("aid"),                # what is the ID variable for observations
+  noms = c("race", "romantic_relationship", "substance_use_neighborhood", "depressed", "sex", "pick_peers", "mom_drinks"),     
+  ords = c("age"),   # tell amelia these are ordered 
+  bounds = bounds_matrix          # tell amelia to bound some vars
+  )
+
+drinks_imputed <- imputed_1$imputations$imp1
+
+rm(amelia, bounds_matrix, imputed_1)
+
+```
+
+```{r recoding, echo = FALSE}
+drinks_imputed$peers_drink <- ifelse(drinks_imputed$peers_drink < 2, 0, 1) 
+
+```
+
+
+```{r matching, echo = FALSE, include=FALSE, message = FALSE}
+set.seed(1234)
+drinks_matched <- matchit(
+  formula = peers_drink ~ sex + race + romantic_relationship +substance_use_neighborhood + depressed + age + mom_drinks + pick_peers + bmi,
+  data    = drinks_imputed,
+  method  = "nearest",
+  caliper = 0.03
+)
+summary(drinks_matched)
+
+drinks_final <- match.data(drinks_matched)
+
+drinks_final$race <- relevel(drinks_final$race, ref = "Other")
+drinks_final$peers_drink <- ifelse(drinks_final$peers_drink == 1, "Peers Drink", "Peers Don't Drink") %>% as.factor()
+
+```
+
+## Data
+My data is sourced from the National Longitudinal Study of Adolescent to Adult Health (Add Health), which follows the social and psychological development of adolescents into young adulthood. Respondents consisted of individuals that were in grades 7-12 during the 1994-1995 school year in the United States and were selected from a sample of schools stratified by region, school type, ethnic mix, and size. I analyze data from the 1995 Wave I In-Home survey, where respondents were in the stage of adolescence, looking at peer influences on drinking choices during adolescence. I investigate the relationship between peers’ drinking habits (treatment variable) and the number of drinks typically consumed in a drinking session (outcome variable). In order to measure peer’s drinking habits, I use a question from *Section 28*, which asks “Of your 3 best friends, how many drink alcohol at least once a month?” The treatment variable was dichotomized by assigning all respondents who responded with zero to the control condition (peers don’t drink) and all those with a non-zero response to the treatment condition (peers drink). The outcome variable, numbers of drinks per session, was generated using a question from the same section that asked respondents to report the number of standard drinks they typically consumed each time they “had a drink” in the last 12 months on a continuous scale.  
+
+In order to explore whether peer influence on drinking is regulated by parental influence, the mother’s drinking habits were included as a key control variable, measured using a question on the frequency of alcohol consumption in the parental questionnaire. The responses were recoded into a binary variable equal to 1 if the mother drank regularly and 0 otherwise. In order to make the mother’s drinking habits comparable to those of peers’, ”regular" drinking was defined as at least once a month for both variables. The parental questionnaire was to be completed by the biological mother unless she did not live with the respondent. Therefore, there were very few responses from other guardians, and including them could introduce omitted variable bias as not living with the biological mother may affect peer relationships and drinking patterns. Only responses from the biological mother were thus included, meaning parental influences were approximated only by the biological mothers’ drinking habits. Controls for the body composition and demography of the respondent, such as sex, race, age, and BMI (calculated from reported height and weight), were included as these can lead to differences in drinking culture and capacity. Neighborhood substance use incidence and whether the respondent’s parents let them pick their own friends were included as binary controls for environmental effects on drinking choices [@leventhal2000]. Finally, having felt depressed or been in a romantic relationship in the last 18 months, both linked to adolescent risk behaviors [@halpern2007] were included as additional controls. Summary statistics are shown in Table 1. 
+
+
+```{r summary statistics, echo = FALSE, results='asis', fig.align="center"}
+var_names <- list(
+  drinks    = "Drinks per Session",
+  sex          = "Sex",
+  race        = "Race",
+  age = "Age", 
+  bmi = "BMI", 
+  romantic_relationship = "Romantic Relationship", 
+  mom_drinks = "Mother Drinks", 
+  substance_use_neighborhood = "Neighborhood Drinking", 
+  depressed = "Feelings of Depression", 
+  pick_peers = "Can Pick Own Friends"
+)
+
+tableby(peers_drink ~ drinks + sex + race + age + bmi + mom_drinks + romantic_relationship +substance_use_neighborhood + depressed + pick_peers,
+        numeric.stats =  "meansd",  # only one summary stat
+        numeric.simplify = TRUE,     # put on the same row as variable name
+        numeric.test     = "kwt",    # manually set test types
+        cat.test         = "chisq",  # manually set test types
+        data             = drinks_final, 
+        test             = TRUE,     # set test to true (remember to pair w/ mean/sd)
+        digits           = 2) %>%
+  summary(title = "Covariate Balance on Matched Characteristics",
+           labelTranslations = var_names, pfootnote = TRUE, align = "center")
+
+```
+
+Around 50% of values for the outcome variable were missing due to skips from respondents who had reported not consuming alcohol at all in an earlier question. As such individuals may have strong personal motivations to not drink that may even lead to specific selection of friends who don’t drink, they would not provide insight into how peer influences affect choices in adolescents that would consider drinking. Thus, these observations were dropped from the data. Missing values due to skips from respondents who aren’t strict non-drinkers, but hadn’t drank in the last 12 months were replaced with “0”s to denote a choice to consume 0 drinks. Finally, only 0.05% of respondents reported more than 45 drinks per session and were dropped as anomalies. After these adjustments, there were no missing values left in the outcome variable. However, the treatment variable had four times as many missing values in observations that reported fewer than 3 (median) drinks per session than those who reported more than 3 drinks. To reduce such systematic bias, multiple imputation was used to simulate missing values for the treatment variable and other controls (a total of 0.9% missing values, see Appendix A).
+
+As the treatment was not randomized (individuals are drawn to friends through personal, non-random processes), the data showed covariate imbalance. In order to more precisely estimate the treatment effect, matching was conducted using a nearest neighbor method that matched each treated unit to its closest control unit. Covariate balance was obtained, as shown in Table 1 by non-significant p-values for tests of difference in covariate statistics between the treatment and control conditions (also see Appendix B).
+
+```{r models, echo=FALSE, include=FALSE}
+lm_naive <- lm(drinks ~ peers_drink, data = drinks_final)
+summary(lm_naive)
+
+lm_peervsmom <- lm(drinks ~ peers_drink + mom_drinks + peers_drink*mom_drinks, data = drinks_final)
+summary(lm_peervsmom)
+
+lm_physicality <- lm(drinks ~ peers_drink + mom_drinks + sex + race + age + bmi, data = drinks_final)
+summary(lm_physicality)
+
+lm_full <- lm(drinks ~ peers_drink + mom_drinks + sex + race + age + bmi + substance_use_neighborhood + peers_drink*romantic_relationship + depressed + pick_peers + peers_drink*mom_drinks, data = drinks_final)
+summary(lm_full) 
+
+anova <- anova(lm_naive, lm_peervsmom, lm_physicality, lm_full)
+
+```
+
+
+## Methods
+
+The relationship between peers’ drinking habits and number of drinks consumed per session is analyzed using a multivariate linear regression, assuming the independence of observations and constant variance between the treatment and control groups. I considered four models, as shown in Table 2. Model 1 is a “naive” model, looking only at the bivariate relationship between peers’ drinking habits and number of drinks. Model 2 looks at the effects of peer influence on drinking choices in relation to parental influences by including the mothers’ drinking habits as a control and an interaction term between the mothers and peers’ drinking habits to explore if peer and parental influences are interdependent. Model 3 excludes the interaction term but includes controls for body composition and demography that might affect drinking culture and capacity, thus affecting the number of drinks consumed. Model 4 is a full model that includes additional controls for environmental and emotional variables as well as two interaction terms to investigate if peer influences on drinking are interdependent with parental influences or romantic influences, both of which may be important social drivers of drinking choices alongside peer influences. A side-by-side ANOVA analysis was used to compare the four models. Model 4 yielded the smallest residual sum of squares, with a statistically significant advantage to the other models, and was hence chosen as the best fit (see Appendix C). An equation of model 4 is: 
+
+ $$\scriptstyle drinks = \alpha + \beta1(peers\_drinkPeers\space Drink) + \beta2(mom\_drinks) + \beta3(peers\_drinkPeers\space Drink \times mom\_drinks) + \beta4(sexMale) +  $$
+ $$\scriptstyle \beta5(raceAsian/Pacific\space  Islander) + \beta6(raceBlack/African\space American)+ \beta7(raceNative\space American)+\beta8(raceWhite) +\beta9(age) + $$ 
+ $$ \scriptstyle   \beta10(bmi)+ \beta11(substance\_use\_neighborhoodNot\space Low)+ \beta12(romantic\_relationship) + \beta13(depressed) + \beta14(pick\_peers)+$$
+ $$\scriptstyle  \beta15(peers\_drinkPeers\space Drink \times romantic\_relationship) +  \epsilon$$
+
+Visualizations are used in my analysis to look at the effect of peers’ drinking habits against parental and romantic influences. While my study relies on observational data, matching is used to obtain covariate balance across the treatment and control conditions. This approximates the balance resulting from a randomized treatment in an experiment by balancing traits across conditions as if they were randomly distributed. My study would thus analogize to an experiment in terms of the precision of the estimated treatment effect, but falls short of an experiment as it is difficult to determine the direction of causality so causal inference is not possible. It might be that adolescents that drink more pick peers that also drink more rather than peer drinking habits causing higher levels of drinking. As the treatment is assigned prior to measuring outcome in an experiment, it is easier to distinguish a case of reverse causality in an experiment than my study. Moreover, the Add Health sample is stratified and selected with unequal probabilities of selection and thus my findings cannot be inferred to the general population as would be the case in an experiment with a random sample.
+
+## Results
+
+
+```{r regression table, echo=FALSE, results="asis", message=FALSE, warning= FALSE}
+stargazer(lm_naive, lm_peervsmom, lm_physicality, lm_full, 
+         font.size = 'tiny', type = "latex",  header = FALSE, 
+         title = "Treatment Effect of Peer Drinking on Number of Drinks per Session", table.placement = "H", column.sep.width = "-11pt") 
+#"tiny", "scriptsize", "footnotesize", "small",
+#"normalsize", "large", "Large", "LARGE", "huge", "Huge". 
+
+#confint(lm_full)
+
+```
+
+
+Regular consumption of alcohol by peers is associated with an increase of 1.724 drinks per drinking session in adolescents (Table 2, Model 4), significant at the 0.01 level, with a 95% confidence interval of [0.887, 2.406].Given that 50% of adolescents consume between 1 and 4 drinks per drinking session (IQR = 3), an increase of 1.724 drinks is a substantial increase in alcohol consumption relative to the variation in the number of drinks consumed, equal in magnitude to 57% of the IQR. The mother's drinking habits, on the other hand, seem to have no effect on an adolescent's drinking choices as the  estimated coefficient is not statistically significant. The interaction term between the mother's and peers' drinking habits is also statistically insignificant, suggesting that the mother's drinking habits exert no influence on drinking choices even if the adolescent is otherwise surrounded by peers who drink, and that peer influence on drinking behavior is self-operating and not regulated by parental influence. Nonetheless, while peer effects seem to be independent of parental effects, they seem to be regulated by whether the adolescent is in a romantic relationship. While being in a relationship on its own, in the absence of having peers that drink regularly, does not have a statistically significant effect on alcohol consumption, the interaction term between peers' drinking habits and having been in a romantic relationship recently is statistically significant at the 0.05 level. The estimated effect is 1.182 drinks, also large relative to the IQR of 3 drinks, and a 95% confidence interval of [0.165, 2.199].This suggests that if an adolescent both reports having peers who drink and a romantic partner, they are likely to consume even more alcohol than if they had peers who drank but did not have a romantic partner. Another significant predictor of increased alcohol consumption is being male, while being African American appears to decrease the number of drinks typically consumed. 
+
+Although matching improved covariate balance between the treatment conditions, allowing for greater precision in estimating the treatment effect, the treatment was still not randomized as individuals select friends through personal, non-random processes. These means that causal inference is still not possible as there may be other covariates that have gone unchecked or a case of reverse causality. Moreover, the sample was not randomly but selected from schools' enrollment rosters so findings cannot be inferred to the general population, which includes adolescents that aren't in school.
+
+```{r plot, results='asis', fig.height=2, fig.align = "center", fig.width=4, fig.align = "center" }
+
+peer <- plot_model(
+  lm_full,                            # pick a model to plot
+  type   = "pred",                # we want predicted values of y
+  terms  = c("peers_drink")) + # our explanatory variable & any moderators                   
+  scale_fill_brewer(palette="Set1") +  
+  ylab("Number of Drinks") + xlab("Peers' Drinking Habits") + ylim(c(0,6)) +
+  ggtitle("Figure 1: Number of Drinks Against Peers' Drinking Habits") +
+  font_size(title = 5)+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(axis.text.x = element_text(size=6, color = "black"), axis.text.y = element_text(size=6, color = "black")) + theme_clean(base_size = 8) +  theme(legend.position = "bottom")+ theme(plot.title = element_text(hjust = 0.5)) + theme(plot.background = element_blank())
+
+
+peervsmom <- plot_model(
+  lm_full,                            # pick a model to plot
+  type   = "pred",                # we want predicted values of y
+  terms  = c("peers_drink", "mom_drinks")) + # our explanatory variable & any moderators                   
+  scale_fill_brewer(palette="Set1") +  
+  ylab("Number of Drinks") + xlab("Peers' Drinking Habits") + scale_color_manual(labels = c("Doesn't Drink", "Drinks"), values = c("coral3", "darkslateblue")) +
+  ggtitle("Figure 2: Number of Drinks Against Peers' Drinking \nHabits, by Mother's Drinking Habits") +
+  font_size(title = 5) + theme(legend.position = "bottom") + ylim(c(0,7)) +
+  labs(col="Mothers' Drinking Habits", size = 6) + theme(plot.title = element_text(hjust = 0.5)) +
+  theme(axis.text.x = element_text(size=6, color = "black"), axis.text.y = element_text(size=6, color = "black"), 
+  legend.text = element_text(size = 4, color = "black")) + theme_clean(base_size = 6) + theme(legend.position = "bottom") + theme(plot.title = element_text(hjust = 0.5, size=8)) + theme(plot.background = element_blank())
+
+
+peervsrace <- plot_model( 
+  lm_full,                            # pick a model to plot
+  type   = "pred",                # we want predicted values of y
+  terms  = c("race", "peers_drink")) + # our explanatory variable & any moderators                   
+  scale_fill_brewer(palette="Set1") +  
+  ylab("Number of Drinks") + xlab("Race") + #scale_color_manual(labels = c("Doesn't Drink", "Drinks"), values = c("coral3", "darkslateblue")) +
+  ggtitle("Figure 4: Number of Drinks Against Race, by Peers' Drinking Habits") +
+  font_size(title = 5) + theme(legend.position = "bottom") + # ylim(c(0,7)) +
+  labs(col="Peers' Drinking Habits", size = 6) + theme(plot.title = element_text(hjust = 0.5)) +
+  theme(axis.text.x = element_text(size=6, color = "black"), axis.text.y = element_text(size=6, color = "black"), 
+  legend.text = element_text(size = 4, color = "black")) + theme_clean(base_size = 8) + theme(legend.position = "bottom") + theme(plot.title = element_text(hjust = 0.5, size=8)) + theme(plot.background = element_blank())
+
+
+peervsrom <- plot_model(
+  lm_full,                            # pick a model to plot
+  type   = "pred",                # we want predicted values of y
+  terms  = c("peers_drink", "romantic_relationship") # our explanatory variable & any moderators                   
+  )  + scale_fill_brewer(palette="Set1") +  
+  ylab("Number of Drinks") + xlab("Peers' Drinking Habits") + scale_color_manual(labels = c("No Relationship", "Relationship"), values = c("brown1", "blue")) + ylim(c(0,7)) +
+  ggtitle("Figure 3: Number of Drinks Against Peers' Drinking \nHabits, by Romantic Relationship Status") +
+  font_size(title = 5) + theme(legend.position = "bottom") + 
+  labs(col="Romantic Relationship", size = 6) + theme(plot.title = element_text(hjust = 0.5)) +
+  theme(axis.text.x = element_text(size=6, color = "black"), axis.text.y = element_text(size=6, color = "black"), 
+  legend.text = element_text(size = 4, color = "black")) + theme_clean(base_size = 6) + theme(legend.position = "bottom") + theme(plot.title = element_text(hjust = 0.5, size=8))+ theme(plot.background = element_blank())
+
+peer
+
+```
+
+Figure 1 suggests that adolescents with peers that drink consume around twice as many drinks on average per session (around 4 drinks) than those who don't have peers that drink (around 2 drinks). The effect shown in Figure 1 is inclusive of the interaction effect of peer drinking with being in a romantic relationship.  
+
+```{r inteffect, results='asis', fig.height=2.5, fig.align = "center" }
+grid.arrange(peervsmom, peervsrom, ncol =2 ) 
+#quantile(drinks_final$drinks, probs = c(0.25,0.75))
+
+#dataMaid::makeCodebook(drinks_final)
+#write.csv(drinks_final, "data_POL346Final.csv")
+
+```
+
+
+Figure 2 shows that the mother's drinking patterns have no effect on an adolescent's alcohol consumption, and that peer effects are equally large regardless of parental drinking habits. This suggests that peer influence is self-regulating. Figure 3 build on findings from Table 2, showing an interaction effect between having a romantic partner and peer influences on drinking choices. When an adolescent reports none of their closest peers to drink, there appears to be no difference in drinking between those who have been in a relationship recently and those who haven't. However, when peers are reported to drink, there is a noticeable increase in alcohol consumption due to having a romantic in addition to the increase due to peer influence. As peer influence was measured using respondents' reports of how many of their three best friends drank regularly, it is likely that if they were in a relationship, they would count their partner as one of these best friends. This suggests that the significant interaction effect is observed due to one of the peers who drink being a romantic partner, meaning that the effect of a significant other drinking on alcohol consumption is even larger than a friend drinking. This significant interaction effect suggests that while parental influence does not have an effect on drinking choices and does not regulate peer influence, the the strength of peer effects on drinking behavior are still variable based on the type of peer relationship, as a romantic partner who drinks may exert a larger effect than a non-romantic peer. 
+
+## Discussion
+
+My study relies on Add Health Data, which did not use random sampling as only school-going adolescents who fit into identified strata were selected. This specifically excludes low-income adolescents that are unable to attend school. Moreover, the sample only includes adolescents residing in the United States, which has a unique culture surrounding adolescent alcohol consumption due to an older legal drinking age than many other nations. Therefore, a limitation of my study is that the sample is not representative of all adolescents and findings cannot inferred to the general population as they are specific to school-going adolescents residing in the United States. Moreover, while matching improved covariate balance, more closely simulating randomized treatment assignment, it is still not possible to make causal inferences from my findings as there may be unobserved covariates that are unchecked or a case of reverse causality. It may be that adolescents who drink more select friends who drink too rather than peers' drinking habits causing increased drinking. Another limitation is that parental influences on drinking choices are approximated using only the biological mother's drinking habits as the parental questionnaire was primarily administered to the biological mother. As mothers and fathers can play different roles, with the father more closely associated with risk-taking behaviors [@hagankuebli2007], paternal influences on drinking choices may be stronger. Moreover, as the threshold for "regular" drinking was set to at least once a month for comparability to peer habits, my analysis might consider too mild a level of parental drinking. The study could thus be extended by including fathers' drinking habits and narrowing the drinking threshold to specifically consider binge-drinking by parents as daily household exposure to alcohol might affect one differently to only monthly exposure. Finally, the study can be modified to include Wave II data in a panel data study to control for unobserved individual-fixed effects and study the treatment effect of peer drinking habits with greater precision. 
+
+## Conclusion
+
+My findings suggest that having a peer group that consumes alcohol is a significant predictor of increased adolescent alcohol consumption, with more drinks being consumed per drinking session. Peer influences on adolescent drinking choices appear to be largely self-regulating as no significant interaction effects were found between parental and peer influences, suggesting parental drinking patterns do not alter the strength of peer influences on drinking. Nonetheless, a significant interaction effect was found between peer influences and having been in a romantic relationship recently, suggesting variation within peer influences depending on the nature of the peer relationship. It appears a romantic partner who drinks is associated with a larger increase in alcohol consumption that non-romantic peers who drink. These findings align with components of both theories. While the salience of peer effects that are independent of parental effects supports @windle2000 and @simonsmorton2001 in their ideas that peer influences alone are strong and sufficient predictors of adolescent drinking choices, regardless of parental drinking habits, the presence of a significant interaction with romantic relationships calls for greater attention to moderators than Windle or Simons-Morton et al.’s theory suggests. The interplay of peer and romantic influences supports @olson2018 and @halpern2007 in their theory that peer influences are subject to moderation by other relationships, although parental relationships do not appear to be one of those regulators, contrary to Olson and Crosnoe’s ideas.  
+
+\newpage
+
+## Bibliography
+
+<div id="refs"></div>
+
+\newpage
+
+# Appendices 
+
+## Appendix A
+### Visualizing Missing Values Before Multiple Imputation
+
+```{r missingness plot,  echo = FALSE, message=FALSE, warning=FALSE, results = 'asis',  fig.height= 4, fig.width= 6, fig.align = "center"}
+
+allmiss + ggtitle("Figure 4: All Missing Values") + theme(plot.title = element_text(size = 8, face = "bold"))+ theme(plot.title = element_text(hjust = 0.5))
+
+less3miss + ggtitle("Figure 5: Missing Values in Subsample Drinks <3 i.e. Fewer than Median Number of Drinks Consumed") + theme(plot.title = element_text(size = 8, face = "bold"))+ theme(plot.title = element_text(hjust = 0.5))
+
+more3miss +  ggtitle("Figure 6: Missing Values in Subsample Drinks >3 i.e. Greater than Median Number of Drinks Consumed") + theme(plot.title = element_text(size = 8, face = "bold"))+ theme(plot.title = element_text(hjust = 0.5))
+
+```
+### Missing Values Check After Multiple Imputation
+```{r missingness plot 1,  echo = FALSE, message=FALSE, warning=FALSE, results = 'asis',  fig.height= 4, fig.width= 5, fig.align = "center"}
+
+naniar::gg_miss_var(drinks_imputed) + ggtitle("Figure 7: Missing Values Check After Multiple Imputation") + theme(plot.title = element_text(size = 8, face = "bold"))+ theme(plot.title = element_text(hjust = 0.5))
+
+```
+
+\newpage
+## Appendix B
+### Covariate Balance After Matching
+
+```{r loveplot, results = 'asis', echo = FALSE}
+cobalt::love.plot(drinks_matched, abs = TRUE) + ggtitle("Figure 8: Covariate Balance")
+```
+
+\newpage
+
+## Appendix C
+### Comparison of Models
+
+```{r compare models, echo = FALSE, message=FALSE, warning=FALSE, results = 'asis',  fig.height= 3, fig.width= 5,fig.align = "center" }
+
+options(knitr.kable.NA = '')
+anova %>%
+  kable(
+    format = 'latex',
+    digits = 3,
+    caption = "ANOVA Comparison of Models (1 to 4 in Descending Order)",
+    booktabs = TRUE) %>%
+  kable_styling(full_width=FALSE,latex_options = "hold_position") 
+
+```
+
+
+
+
